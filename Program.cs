@@ -9,20 +9,19 @@
 // Нахождение суммы положительных чисел массива - Антон
 // Нахождение суммы отрицательных чисел - Семён
 
-
 int[] CreateArray(int size) //Создание массива - Ольга
 {
     return new int[size];
 }
 
-void FillArray(int[]array) //Заполнение массива - Ольга
+int [] FillArray(int[]array) //Заполнение массива - Ольга
 {
     int[] randomArray = new int[12];
         for (int i = 0; i < randomArray.Length; i++)
         {
             randomArray[i] = new Random().Next(-9,9);
-                Console.Write(randomArray[i] + " ");
-    }
+        }
+    return randomArray;
 }
 
 void PrintArray (int [] array) //Вывод массива - Семён
@@ -53,18 +52,17 @@ int SummNegative (int [] array) //Находение суммы отрицате
     int result = 0;
     for (int i = 0; i<length; i++)
         {
-            if (array[i] > 0) result = result + array [i] ;
+            if (array[i] < 0) result = result + array [i] ;
         }
     return result;
 }
 
 
-
-
-
-
-int[]array = CreateArray(12);
-FillArray(array);
-
-
-
+int[] array = CreateArray(12);
+int[] c = FillArray(array);
+Console.WriteLine();
+PrintArray(c);
+int summPos = SummPositive(c);
+int summNeg = SummNegative(c);
+Console.WriteLine(summPos);
+Console.WriteLine(summNeg);
